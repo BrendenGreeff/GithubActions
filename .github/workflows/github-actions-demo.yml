@@ -1,0 +1,35 @@
+name: GitHub Actions Demo
+
+on:
+  push:
+    branches: [ "main" ]
+    
+  pull_request:
+    branches: [ "main" ]
+    
+  schedule:
+    - cron: '15 06 * * sun'
+      
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      # Name of event that triggered workflow and repomits referencing:
+      - name: Trigger event and reference
+        run: |
+          echo "Event that triggered workflow: $GITHUB_EVENT_NAME"
+          echo "Reference: $GITHUB_REF"
+          
+      - name: All files
+        run: echo ls-la
+        
+    
+    
+    
+  
+    
